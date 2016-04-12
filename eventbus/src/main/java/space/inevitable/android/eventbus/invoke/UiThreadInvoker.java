@@ -8,7 +8,7 @@ import space.inevitable.eventbus.beans.ExecutionBundle;
 import space.inevitable.eventbus.invoke.Invoker;
 import space.inevitable.eventbus.invoke.InvokerRunnable;
 
-public final class UiThreadInvoker implements Invoker {
+public final class UiThreadInvoker extends Invoker {
     private final EventBus eventBus;
     private final UiThreadExecutor uiThreadExecutor = new UiThreadExecutor();
 
@@ -28,5 +28,10 @@ public final class UiThreadInvoker implements Invoker {
     @Override
     public String getName() {
         return UiThreadInvoker.class.getSimpleName();
+    }
+
+    @Override
+    public int getExecutionPriority() {
+        return 0;
     }
 }
